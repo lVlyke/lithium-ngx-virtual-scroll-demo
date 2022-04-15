@@ -1,0 +1,24 @@
+:host {
+    display: block;
+
+    &[spinning] {
+        animation: rotate 1s linear infinite;
+    }
+
+    img {
+        object-fit: contain;
+        max-width: 100%;
+        max-height: 100%;
+        
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate3d(0, 0, 1, 0deg);
+        }
+
+        to {
+            transform: rotate3d(0, 0, 1, 360deg);
+        }
+    }
+}
