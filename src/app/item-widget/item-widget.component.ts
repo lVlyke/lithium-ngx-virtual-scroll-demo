@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-item-widget',
@@ -10,6 +11,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   }
 })
 export class ItemWidgetComponent {
+
+  public readonly baseHref = environment.production ? location.pathname : '';
 
   @Input()
   public spinning = true;
