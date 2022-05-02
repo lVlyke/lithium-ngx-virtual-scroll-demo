@@ -1220,10 +1220,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@lithiumjs/ngx-virtual-scroll@^0.1.0-rc.0":
-  version "0.1.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@lithiumjs/ngx-virtual-scroll/-/ngx-virtual-scroll-0.1.0-rc.0.tgz#36b47f30e1983f84b86c2caa0b6f30c17223306c"
-  integrity sha512-NIl82xHyrgbyK9l6hSyT31DFnuEA68AXjMhiRYb8ed7FmHJGoyXE2dkkfnIZW47M17CcOO5lONevZegGdUuA8g==
+"@lithiumjs/ngx-virtual-scroll@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@lithiumjs/ngx-virtual-scroll/-/ngx-virtual-scroll-0.1.0.tgz#ce4f51a3743f54a8bca449912fa00c3d1d2dec3c"
+  integrity sha512-NLKz3DJpp9U1lxfGTwLlAovj82H+W1yOGk6OtU2nVVU2XhAhzM1Ap4gDPPHzYrvyJ9U/5vbQscn25IiszGGXEg==
   dependencies:
     tslib "^2.3.0"
 
