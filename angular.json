@@ -109,5 +109,7 @@
       }
     }
   },
-  "defaultProject": "lithium-ngx-virtual-scroll-example"
+  "cli": {
+    "analytics": false
+  }
 }
