@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import _ from 'lodash';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { AutoPush, ComponentState, ComponentStateRef } from '@lithiumjs/angular';
 import { VirtualScroll } from '@lithiumjs/ngx-virtual-scroll';
