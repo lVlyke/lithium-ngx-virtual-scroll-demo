@@ -1,16 +1,29 @@
 import _ from 'lodash';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { AutoPush, ComponentState, ComponentStateRef } from '@lithiumjs/angular';
-import { VirtualScroll } from '@lithiumjs/ngx-virtual-scroll';
+import { NgxVirtualScrollModule, VirtualScroll } from '@lithiumjs/ngx-virtual-scroll';
 import { combineLatest, delay, filter, merge, switchMap, take } from 'rxjs';
-import { NgForm } from '@angular/forms';
+import { ItemWidgetComponent } from './item-widget/item-widget.component';
 
 @Component({
+  standalone: true,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [ComponentState.create(AppComponent)]
+  imports: [
+    CommonModule,
+    FormsModule,
+    
+    NgxVirtualScrollModule,
+
+    ItemWidgetComponent
+  ],
+  providers: [
+    ComponentState.create(AppComponent)
+  ]
 })
 export class AppComponent {
   public readonly MAX_SCROLL_HEIGHT_PX = 33554400;

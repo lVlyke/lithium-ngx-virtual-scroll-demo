@@ -109,33 +109,32 @@
             </form>
         </div>
 
-        <li-virtual-scroll *ngIf="virtualScrollEnabled; else simpleScrollTemplate"
-                           class="scroll-container"
-                           [items]="listItems"
-                           [gridList]="gridList"
-                           [scrollDebounceMs]="scrollDebounceMs"
-                           [bufferLength]="bufferLength"
-                           [asyncRendering]="asyncRendering"
-                           [viewCache]="viewCacheLength">
-            <div *liVirtualItem="let item" class="list-item">
-                <ng-container *ngTemplateOutlet="itemContentTemplate; context: { $implicit: item }">
-                </ng-container>
-            </div>
+        @if (virtualScrollEnabled) {
+            <li-virtual-scroll class="scroll-container"
+                            [items]="listItems"
+                            [gridList]="gridList"
+                            [scrollDebounceMs]="scrollDebounceMs"
+                            [bufferLength]="bufferLength"
+                            [asyncRendering]="asyncRendering"
+                            [viewCache]="viewCacheLength">
+                <div *liVirtualItem="let item" class="list-item">
+                    <ng-container *ngTemplateOutlet="itemContentTemplate; context: { $implicit: item }">
+                    </ng-container>
+                </div>
 
-            <div *liVirtualPlaceholder="let item" class="list-item placeholder">
-                <ng-container *ngTemplateOutlet="itemPlaceholderContentTemplate; context: { $implicit: item }">
-                </ng-container>
-            </div>
-        </li-virtual-scroll>
-
-        <ng-template #simpleScrollTemplate>
+                <div *liVirtualPlaceholder="let item" class="list-item placeholder">
+                    <ng-container *ngTemplateOutlet="itemPlaceholderContentTemplate; context: { $implicit: item }">
+                    </ng-container>
+                </div>
+            </li-virtual-scroll>
+        } @else {
             <div class="scroll-container" [attr.grid-list]="gridList || null">
                 <div *ngFor="let item of listItems" class="list-item">
                     <ng-container *ngTemplateOutlet="itemContentTemplate; context: { $implicit: item }">
                     </ng-container>
                 </div>
             </div>
-        </ng-template>
+        }
     </div>
 </div>
 
