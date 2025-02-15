@@ -8,22 +8,19 @@ import { combineLatest, delay, filter, merge, switchMap, take } from 'rxjs';
 import { ItemWidgetComponent } from './item-widget/item-widget.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    CommonModule,
-    FormsModule,
-    
-    NgxVirtualScrollModule,
-
-    ItemWidgetComponent
-  ],
-  providers: [
-    ComponentState.create(AppComponent)
-  ]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CommonModule,
+        FormsModule,
+        NgxVirtualScrollModule,
+        ItemWidgetComponent
+    ],
+    providers: [
+        ComponentState.create(AppComponent)
+    ]
 })
 export class AppComponent {
   public readonly MAX_SCROLL_HEIGHT_PX = 33554400;
