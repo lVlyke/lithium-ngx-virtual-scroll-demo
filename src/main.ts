@@ -1,4 +1,4 @@
-import { enableProdMode, provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { enableProdMode, provideZonelessChangeDetection } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { environment } from './environments/environment';
@@ -11,7 +11,7 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        provideExperimentalZonelessChangeDetection(),
+        provideZonelessChangeDetection(),
         provideRouter(APP_ROUTES),
     ]
 }).catch(err => console.log(err));

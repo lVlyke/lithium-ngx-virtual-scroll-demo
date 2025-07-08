@@ -1,7 +1,9 @@
 <div class="page">
-    <div *ngIf="scrollHeightWarning" class="error-box">
-        Virtual scroll height exceeds the browser's maximum scroll height of {{ MAX_SCROLL_HEIGHT_PX }}px.
-    </div>
+    @if (scrollHeightWarning) {
+        <div class="error-box">
+            Virtual scroll height exceeds the browser's maximum scroll height of {{ MAX_SCROLL_HEIGHT_PX }}px.
+        </div>
+    }
 
     <div class="content">
         <div class="demo-controls">
@@ -10,7 +12,6 @@
             <form class="demo-controls-form">
 
                 <h3>List controls:</h3>
-                
                 <span>
                     <label for="virtual-scroll-enabled-control">Virtual scroll enabled</label>
                     <input id="virtual-scroll-enabled-control"
@@ -30,7 +31,10 @@
 
                 <span>
                     <label for="grid-list-control">Grid list</label>
-                    <input id="grid-list-control" type="checkbox" [(ngModel)]="gridList" name="gridList">
+                    <input id="grid-list-control"
+                           type="checkbox"
+                           name="gridList"
+                           [(ngModel)]="gridList">
                 </span>
 
                 <span>
@@ -41,11 +45,10 @@
                            [ngModel]="listItems.length"
                            (ngModelChange)="updateListItems($event)">
                 </span>
-                
                 <span>
                     <label for="widget-count-control">
                         Number of item widgets
-                        <app-item-widget [spinning]="false"></app-item-widget>
+                        <app-item-widget [spinning]="false" />
                     </label>
                     <select name="widgetCount" [(ngModel)]="widgetCount">
                         <option>0</option>
@@ -111,28 +114,27 @@
 
         @if (virtualScrollEnabled) {
             <li-virtual-scroll class="scroll-container"
-                            [items]="listItems"
-                            [gridList]="gridList"
-                            [scrollDebounceMs]="scrollDebounceMs"
-                            [bufferLength]="bufferLength"
-                            [asyncRendering]="asyncRendering"
-                            [viewCache]="viewCacheLength">
+                               [items]="listItems"
+                               [gridList]="gridList"
+                               [scrollDebounceMs]="scrollDebounceMs"
+                               [bufferLength]="bufferLength"
+                               [asyncRendering]="asyncRendering"
+                               [viewCache]="viewCacheLength">
                 <div *liVirtualItem="let item" class="list-item">
-                    <ng-container *ngTemplateOutlet="itemContentTemplate; context: { $implicit: item }">
-                    </ng-container>
+                    <ng-container *ngTemplateOutlet="itemContentTemplate; context: { $implicit: item }" />
                 </div>
 
                 <div *liVirtualPlaceholder="let item" class="list-item placeholder">
-                    <ng-container *ngTemplateOutlet="itemPlaceholderContentTemplate; context: { $implicit: item }">
-                    </ng-container>
+                    <ng-container *ngTemplateOutlet="itemPlaceholderContentTemplate; context: { $implicit: item }" />
                 </div>
             </li-virtual-scroll>
         } @else {
             <div class="scroll-container" [attr.grid-list]="gridList || null">
-                <div *ngFor="let item of listItems" class="list-item">
-                    <ng-container *ngTemplateOutlet="itemContentTemplate; context: { $implicit: item }">
-                    </ng-container>
-                </div>
+                @for (item of listItems; track item) {
+                    <div class="list-item">
+                        <ng-container *ngTemplateOutlet="itemContentTemplate; context: { $implicit: item }" />
+                    </div>
+                }
             </div>
         }
     </div>
@@ -142,10 +144,10 @@
     <span class="item-label">Item {{ item }}</span>
 
     <div class="img-container">
-        <app-item-widget *ngFor="let time of widgetTimes"
-                         [spinning]="spinningWidgets"
-                         [style.width]="(1 / (widgetCount)) * 100.0 + '%'">
-        </app-item-widget>
+        @for (time of widgetTimes; track $index) {
+            <app-item-widget [spinning]="spinningWidgets"
+                             [style.width]="(1 / (widgetCount)) * 100.0 + '%'" />
+        }
     </div>
 </ng-template>
 
@@ -153,6 +155,8 @@
     <span class="item-label">Item {{ item }}</span>
 
     <div class="img-container">
-        <app-item-widget *ngIf="widgetCount > 0" [spinning]="false"></app-item-widget>
+        @if (widgetCount > 0) {
+            <app-item-widget [spinning]="false" />
+        }
     </div>
 </ng-template>
